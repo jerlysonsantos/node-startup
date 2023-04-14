@@ -1,7 +1,5 @@
-import { Client } from 'pg';
-import { Repository } from '../../../lib/repository/respository.lib';
-import { connection } from '../../../config/database';
-import { Injectable } from '../../../lib/dependency-injection/injectable.decorator';
+import { Repository } from '@repository';
+import { Injectable } from '@injection-dependency';
 import { Generic } from '../models/generic.model';
 
 @Injectable('genericRepository')

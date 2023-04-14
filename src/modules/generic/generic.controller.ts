@@ -1,14 +1,13 @@
-import { Response, Request } from "express";
+import { Response, Request } from 'express';
 
-import { GenericService } from "./generic.service";
+import { GenericService } from './generic.service';
 
-import { Get, Post } from "../../lib/routers/handlers.decorator";
-import { Controller } from "../../lib/routers/controller.decorator";
-import { Inject } from "../../lib/dependency-injection/inject.decorator";
+import { Get, Post, Controller } from '@routers';
+import { Inject } from '@injection-dependency';
 
-@Controller("/")
+@Controller('/')
 class GenericController {
-  @Inject("genericService")
+  @Inject('genericService')
   private genericService: GenericService;
 }
 

@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'module-alias/register';
 
 import bodyParser from 'body-parser';
 import App from './app';

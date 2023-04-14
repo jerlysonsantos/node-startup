@@ -1,7 +1,7 @@
 import { GenericService } from './generic.service';
 import { Request } from 'express';
 import { GenericRepository } from './repository/generic.repository';
-import TestProviders from '../../lib/jest-providers/jest-providers.lib';
+import TestProviders from '@jest-providers';
 
 describe('ImageUploadService', () => {
   let service: GenericService;

@@ -1,5 +1,5 @@
 import express, { Handler } from 'express';
-import { IRouter } from './lib/routers/handlers.decorator';
+import { IRouter } from '@routers';
 import { MetadataKeys } from './lib/routers/utils/metadata.keys';
 
 class App {

@@ -1,6 +1,15 @@
-version: "3"
+version: '3'
 
 services:
+  database:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+
   app:
     container_name: app
     build: .
@@ -17,6 +26,6 @@ services:
     container_name: nginx
     build: ./nginx
     ports:
-      - "8080:80"
+      - '8080:80'
     depends_on:
       - app

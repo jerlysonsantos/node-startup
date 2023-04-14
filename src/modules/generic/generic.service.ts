@@ -1,12 +1,11 @@
-import { Response, Request } from "express";
+import { Response, Request } from 'express';
 
-import { GenericRepository } from "./repository/generic.repository";
-import { Injectable } from "../../lib/dependency-injection/injectable.decorator";
-import { Inject } from "../../lib/dependency-injection/inject.decorator";
+import { GenericRepository } from './repository/generic.repository';
+import { Injectable, Inject } from '@injection-dependency';
 
-@Injectable("genericService")
+@Injectable('genericService')
 class GenericService {
-  @Inject("genericRepository")
+  @Inject('genericRepository')
   genericRepository: GenericRepository;
 
   constructor() {}

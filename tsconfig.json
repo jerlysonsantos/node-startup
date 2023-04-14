@@ -18,7 +18,13 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "lib": ["es2017", "dom"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@injection-dependency": ["src/lib/dependency-injection"],
+      "@jest-providers": ["src/lib/jest-providers/jest-providers.lib.ts"],
+      "@repository": ["src/lib/repository"],
+      "@routers": ["src/lib/routers"]
+    }
   },
   "exclude": ["node_modules"]
 }
