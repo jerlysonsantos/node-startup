@@ -1,11 +1,11 @@
-import { MetadataKeys } from "./utils/metadata.keys";
+import { MetadataKeys } from './utils/metadata.keys';
 
 export enum Methods {
-  GET = "get",
-  POST = "post",
-  PUT = "put",
-  PATCH = "patch",
-  DELETE = "delete",
+  GET = 'get',
+  POST = 'post',
+  PUT = 'put',
+  PATCH = 'patch',
+  DELETE = 'delete',
 }
 
 export interface IRouter {
@@ -19,16 +19,15 @@ const methodDecoratorFactory = (method: Methods) => {
   return (path: string, ...middlewares: any): MethodDecorator => {
     return (target, propertyKey) => {
       const controllerClass = target.constructor;
-      const routers: IRouter[] = Reflect.hasMetadata(
-        MetadataKeys.ROUTERS,
-        controllerClass
-      )
+      const routers: IRouter[] = Reflect.hasMetadata(MetadataKeys.ROUTERS, controllerClass)
         ? Reflect.getMetadata(MetadataKeys.ROUTERS, controllerClass)
         : [];
 
+      const slashPath = path.startsWith('/') ? path : `/${path}`;
+
       routers.push({
         method,
-        path,
+        path: slashPath,
         handlerName: propertyKey,
         middlewares,
       });

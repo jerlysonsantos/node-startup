@@ -1,14 +1,16 @@
 import express, { Handler } from 'express';
-import { IRouter } from '@routers';
-import { MetadataKeys } from './lib/routers/utils/metadata.keys';
+import { IRouter } from 'lib/routers';
+import { MetadataKeys } from '../lib/routers/utils/metadata.keys';
 
-class App {
+class Startup {
   public app: express.Application;
   public port: number;
 
   constructor(appInit: { port: number; middleWares: any[]; controllers: any[] }) {
     this.app = express();
     this.port = appInit.port;
+
+    this.registryDi();
 
     this.middlewares(appInit.middleWares);
     this.routes(appInit.controllers);
@@ -22,6 +24,8 @@ class App {
 
   private routes(controllers: any[]) {
     try {
+      console.log('Registry routes');
+
       controllers.forEach((controller) => {
         const controllerInstance: { [handleName: string]: Handler } = new controller() as any;
 
@@ -36,6 +40,7 @@ class App {
         const router = express.Router();
 
         routers.forEach(({ method, path, handlerName, middlewares = [] }) => {
+          console.log(`${method.toUpperCase()} ${basePath}${path} -> ${String(handlerName)}`);
           router[method](path, ...middlewares, controllerInstance[String(handlerName)].bind(controllerInstance));
         });
 
@@ -46,11 +51,13 @@ class App {
     }
   }
 
-  public listen() {
+  private registryDi() {}
+
+  public run() {
     this.app.listen(this.port, () => {
       console.log(`App listening on the http://localhost:${this.port}`);
     });
   }
 }
 
-export default App;
+export { Startup };
