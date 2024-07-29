@@ -20,10 +20,11 @@
     "lib": ["es2017", "dom"],
     "esModuleInterop": true,
     "paths": {
-      "@injection-dependency": ["src/lib/dependency-injection"],
-      "@jest-providers": ["src/lib/jest-providers/jest-providers.lib.ts"],
-      "@repository": ["src/lib/repository"],
-      "@routers": ["src/lib/routers"]
+      "lib": ["lib"],
+      "@injection-dependency": ["lib/dependency-injection"],
+      "@jest-providers": ["lib/jest-providers/jest-providers.lib.ts"],
+      "@repository": ["lib/repository"],
+      "@routers": ["lib/routers"]
     }
   },
   "exclude": ["node_modules"]
