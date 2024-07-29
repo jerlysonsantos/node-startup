@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import 'module-alias/register';
+import 'tsconfig-paths/register';
 
 import bodyParser from 'body-parser';
 import { Startup } from './startup';

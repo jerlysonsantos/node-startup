@@ -9,9 +9,6 @@ class Startup {
   constructor(appInit: { port: number; middleWares: any[]; controllers: any[] }) {
     this.app = express();
     this.port = appInit.port;
-
-    this.registryDi();
-
     this.middlewares(appInit.middleWares);
     this.routes(appInit.controllers);
   }
@@ -50,8 +47,6 @@ class Startup {
       console.error(error.message);
     }
   }
-
-  private registryDi() {}
 
   public run() {
     this.app.listen(this.port, () => {
