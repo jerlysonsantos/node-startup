@@ -3,15 +3,14 @@ import { Generic } from 'src/@core/entity/Generic';
 import { IGenericRepository } from 'src/@core/repository/IGenericRepository';
 
 export interface INewGenericUseCase {
-  execute(): void;
+  execute(generic: Generic): void;
 }
 
-@Injectable('NewGenericUseCase')
 export class NewGenericUseCase implements INewGenericUseCase {
-  @Inject('GenericRepository')
+  @Inject('IGenericRepository')
   private genericRepository: IGenericRepository;
 
-  async execute() {
-    return this.genericRepository.create(new Generic(1));
+  async execute(generic: Generic) {
+    return this.genericRepository.create(generic);
   }
 }

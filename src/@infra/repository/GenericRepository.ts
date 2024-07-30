@@ -1,9 +1,7 @@
-import { Injectable } from '@injection-dependency';
 import { Repository } from '@repository';
 import { Generic } from 'src/@core/entity/Generic';
 import { IGenericRepository } from 'src/@core/repository/IGenericRepository';
 
-@Injectable('GenericRepository')
 export class GenericRepository extends Repository implements IGenericRepository {
   constructor() {
     super();

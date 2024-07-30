@@ -7,6 +7,8 @@ type SymbolObject<T extends object = Record<any, any>, K = T[keyof T]> = {
   [key: string | number | symbol]: K;
 };
 
+type ClassType<T> = new (...args: any[]) => T;
+
 export class Container {
   providers: SymbolObject = {};
 
@@ -16,12 +18,12 @@ export class Container {
     return this.providers[symbol];
   }
 
-  public register<T>(interfaceName: string, implementation: T): void {
+  public register<T>(interfaceName: string, implementation: ClassType<T>): void {
     const symbol = Symbol.for(interfaceName);
 
     this.providers = {
       ...this.providers,
-      [symbol]: implementation,
+      [symbol]: new implementation(),
     };
   }
 
